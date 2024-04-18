@@ -12,7 +12,7 @@ import { useDeleteTeamMutation, useGetAllTeamsQuery } from "../../store/slice/te
 import ActionIcons from "../components/ActionIcons"
 
 const TeamPage = () => {
-  const { data: members, isLoading: isLoadingMembers } = useGetAllMembersQuery()
+  const { data: members } = useGetAllMembersQuery()
   const { data: teams, isLoading: isLoadingTeams } = useGetAllTeamsQuery()
   const navigate = useNavigate()
 
