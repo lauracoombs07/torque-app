@@ -1,0 +1,94 @@
+{
+  // a nice article to learn about the eslint plugins -> https://prateeksurana.me/blog/difference-between-eslint-extends-and-plugins/
+  "extends": [
+    //    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "import",
+    "@typescript-eslint"
+  ],
+  "ignorePatterns": ["**/playwright.config.ts", "tests", "tests-examples"],
+  "rules": {
+    "array-bracket-newline": ["warn", {"multiline":  true}],
+
+    "arrow-spacing": ["error", {"before": true, "after": true}],
+
+    "block-spacing": ["warn", "always"], //  static { this.bar = 0 }
+
+    "indent": ["warn", 2],
+
+    "key-spacing": "warn", // var obj = { "foo": 42 }
+
+    "no-console": "off",
+
+    "react/react-in-jsx-scope": "off",
+
+    "@typescript-eslint/no-explicit-any": "off",
+
+    "semi": "off",
+    "@typescript-eslint/semi": ["error", "never"],
+
+    "comma-spacing": "off",
+    "@typescript-eslint/comma-spacing": ["warn", {"before": false, "after": true}], // id ,
+
+    "comma-dangle": "off",
+    "@typescript-eslint/comma-dangle": "warn",
+
+    "quotes": "off",
+    "@typescript-eslint/quotes": ["warn", "double"],
+
+    "no-empty": "off",
+    "@typescript-eslint/no-empty-function": "warn",
+
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+
+    "keyword-spacing": "off",
+    "@typescript-eslint/keyword-spacing": "warn", // if () { } else {
+
+    "brace-style": "off",
+    "@typescript-eslint/no-non-null-assertion": ["off"],
+
+    "object-curly-spacing": "off",
+    "@typescript-eslint/object-curly-spacing": ["warn", "always"], // style={{ style }}
+
+    "@typescript-eslint/ban-ts-comment": "off", // ts-ignore
+    "@typescript-eslint/type-annotation-spacing": "warn", // name: number,
+
+    "import/order": [
+      "error",
+      {
+        "groups": [ "builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      // This file ignores THESE 2 rules for test helpers ONLY
+      "files": ["*handlers.ts", "cookie.ts", "storeDispatches.ts"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    }
+  ]
+}
